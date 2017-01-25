@@ -1,0 +1,39 @@
+{
+    "name": "fei/filer-common",
+    "description": "Flash applicative filer - common components",
+    "type": "library",
+    "keywords": [
+        "filer"
+    ],
+    "authors": [
+        {
+            "name": "Vincent Simonin",
+            "email": "vsi@opcoding.eu",
+            "role": "lead"
+        },
+        {
+            "name": "Boris Cerati",
+            "email": "bce@opcoding.eu",
+            "role": "dev"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.flash-global.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Fei\\Service\\Filer\\": "src"
+        }
+    },
+    "require": {
+        "doctrine/common": "^2.6.1",
+        "fei/entities": "^1.0.3",
+        "league/fractal": "^0.14.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^2.2"
+    }
+}

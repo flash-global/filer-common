@@ -1,0 +1,195 @@
+# Filer Common
+
+This is the Filer Common elements package which contains:
+
+- File Entity and transformer
+- File Entity validator
+- Context Entity and transformer
+- Context Entity validator
+- Related classes
+
+# Installation and Requirement
+
+Filer Client needs **PHP 5.5** or higher.
+
+Add this requirement to your `composer.json`: `"fei/filer-common": : "^1.0"`
+
+Or execute `composer.phar require fei/filer-common` in your terminal.
+
+# Usage
+
+## Entities and classes
+
+### File entity
+
+In addition to traditional ID and CreatedAt fields, File Entity has **six** important properties:
+
+| Property    | Type              |
+|-------------|-------------------|
+| uuid        | `string`          |
+| revision    | `integer`         |
+| category    | `integer`         |
+| contentType | `string`          |
+| data        | `string`          |
+| filename    | `string`          |
+| file        | `SplFileObject`   |
+| contexts    | `ArrayCollection` |
+
+- `$uuid` (Universal Unique Identifier) is a **unique id** corresponding to a file. Its format is based on
+  **36 characters** as defined in `RFC4122` prefixed by a **backend id** and separated by a `:`.
+  Example: `bck1:f6461366-a414-4b98-a76d-d7b190252e74`
+- `revision` is an integer indicating the file's current revision.
+- `category` is an integer defining in which database the file will be stored in.
+- `contentType` defines the content type of the `File` object.
+- `data` contains the file's content.
+- `filename` contains the file's filename.
+- `file` is an `SplFileObject` instance. (see https://secure.php.net/manual/en/class.splfileobject.php for more details)
+- `contexts` is an `ArrayCollection` instance where each element is a Context entity
+
+### Context entity
+
+In addition to traditional ID field, Context Entity has **three** important properties:
+
+| Property    | Type              |
+|-------------|-------------------|
+| key         | `string`          |
+| value       | `string`          |
+| file        | `File`            |
+
+- `key` is a string defining the context's key.
+- `value` is a string defining the context's value
+- `file` is a File object indicating the context's related file
+
+### Backend class
+
+Backend class is a container which stores every details for every databases where files are stored.
+It contains a `categories` array to define which `File` categories are linked to which database (see `fei/filer-common` doc).
+
+| Property    | Type            |
+|-------------|-----------------|
+| name        | `string`        |
+| host        | `string`        |
+| driver      | `string`        |
+| port        | `integer`       |
+| dbname      | `string`        |
+| user        | `string`        |
+| password    | `string`        |
+| categories  | `array`         |
+
+- `name` must be **4 characters** long to correspond to a `File` uuid's format.
+- `categories` must preferably contain `File` category constants.
+
+## Other tools
+
+### File validator
+
+You have the possibility to validate a `File` entity with `FileValidator` class:
+
+```php
+<?php
+
+use Fei\Service\Filer\Validator\FileValidator;
+use Fei\Service\Filer\Entity\File;
+
+$fileValidator = new FileValidator();
+$file = new File();
+
+//validate returns true if your File instance is valid, or false in the other case
+$isFileValid = $fileValidator->validate($file);
+
+//getErrors() allows you to get an array of errors if there are some, or an empty array in the other case
+$errors = $fileValidator->getErrors();
+```
+
+By default, all `File` properties must **not** be empty,
+but you're also able to validate only a few properties of your entity, using `validate` methods:
+
+```php
+<?php
+
+use Fei\Service\Filer\Validator\FileValidator;
+use Fei\Service\Filer\Entity\File;
+
+$fileValidator = new FileValidator();
+
+$file = new File();
+$file->setUuid('uuid');
+$file->setRevision(1);
+
+$fileValidator->validateUuid($file->getUuid());
+$fileValidator->validateRevision($file->getRevision());
+
+// will return an empty array : all of our definitions are correct
+$errors = $fileValidator->getErrors();
+echo empty($errors); // true
+
+// contentType can not be empty, let's try to set it as an empty string
+$file->setContentType('');
+$fileValidator->validateContentType($file->getContentType());
+
+// this time you'll get a non-empty array
+$errors = $fileValidator->getErrors();
+
+echo empty($errors); // false
+print_r($errors);
+
+/**
+* print_r will return:
+*
+*    Array
+*    (
+*        ['contentType'] => Array
+*            (
+*                'Content-Type cannot be empty'
+*            )
+*    )
+**/
+```
+
+### Context validator
+
+You have the possibility to validate a `Context` entity with `ContextValidator` class:
+
+```php
+<?php
+
+use Fei\Service\Filer\Validator\ContextValidator;
+use Fei\Service\Filer\Entity\File;
+use Fei\Service\Filer\Entity\Context;
+
+$contextValidator = new ContextValidator();
+$file = new File();
+$context = new Context([
+    'key' => 'my_key',
+    'value' => 'my_value',
+    'file' => $file
+]);
+
+//validate returns true if your Context instance is valid, or false in the other case
+$isContextValid = $contextValidator->validate($context);
+
+//getErrors() allows you to get an array of errors if there are some, or an empty array in the other case
+$errors = $contextValidator->getErrors();
+```
+
+By default, all `Context` properties must **not** be empty,
+but you're also able to validate only a few properties of your entity, using `validate` methods:
+
+```php
+<?php
+
+use Fei\Service\Filer\Validator\ContextValidator;
+use Fei\Service\Filer\Entity\Context;
+
+$contextValidator = new ContextValidator();
+$context = new Context();
+$context->setKey('key');
+$context->setValue('value');
+
+$contextValidator->validateKey($context->getKey());
+$contextValidator->validateValue($context->getValue());
+
+// will return an empty array : all of our definitions are correct
+$errors = $contextValidator->getErrors();
+echo empty($errors); // true
+```
