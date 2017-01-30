@@ -60,25 +60,6 @@ In addition to traditional ID field, Context Entity has **three** important prop
 - `value` is a string defining the context's value
 - `file` is a File object indicating the context's related file
 
-### Backend class
-
-Backend class is a container which stores every details for every databases where files are stored.
-It contains a `categories` array to define which `File` categories are linked to which database (see `fei/filer-common` doc).
-
-| Property    | Type            |
-|-------------|-----------------|
-| name        | `string`        |
-| host        | `string`        |
-| driver      | `string`        |
-| port        | `integer`       |
-| dbname      | `string`        |
-| user        | `string`        |
-| password    | `string`        |
-| categories  | `array`         |
-
-- `name` must be **4 characters** long to correspond to a `File` uuid's format.
-- `categories` must preferably contain `File` category constants.
-
 ## Other tools
 
 ### File validator
