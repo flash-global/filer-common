@@ -72,11 +72,13 @@ class FileValidatorTest extends Unit
         $this->assertTrue($validator->validateUuid(null));
 
         $this->assertTrue($validator->validateUuid('test:00000000-0000-0000-0000-000000000000'));
-        $this->assertTrue($validator->validateUuid('db1:00000000-0000-0000-0000-000000000000'));
+        $this->assertTrue($validator->validateUuid('bck1:00000000-0000-0000-0000-000000000000'));
+        $this->assertFalse($validator->validateUuid('db1:00000000-0000-0000-0000-000000000000'));
         $this->assertFalse($validator->validateUuid(':00000000-0000-0000-0000-000000000000'));
         $this->assertFalse($validator->validateUuid('123456:00000000-0000-0000-0000-000000000000'));
-        $this->assertTrue($validator->validateUuid('a:00000000-0000-0000-0000-000000000000'));
-        $this->assertTrue($validator->validateUuid('1:00000000-0000-0000-0000-000000000000'));
+        $this->assertFalse($validator->validateUuid('a:00000000-0000-0000-0000-000000000000'));
+        $this->assertFalse($validator->validateUuid('1:00000000-0000-0000-0000-000000000000'));
+        $this->assertFalse($validator->validateUuid('00000000-0000-0000-0000-000000000000'));
     }
 
     public function testValidateCreatedAt()

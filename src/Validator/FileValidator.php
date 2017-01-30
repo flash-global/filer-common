@@ -11,7 +11,7 @@ use Fei\Service\Filer\Entity\File;
 class FileValidator extends AbstractValidator
 {
     const UUID_PATTERN =
-        '^[0-9A-Za-z]{1,4}:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$';
+        '^[0-9A-Za-z]{4}:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$';
 
     /**
      * {@inheritdoc}
