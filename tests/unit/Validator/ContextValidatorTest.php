@@ -23,6 +23,19 @@ class ContextValidationTest extends Unit
         $this->assertTrue($validator->validateKey($validator->validateKey(str_repeat('☃', 255))));
     }
 
+    public function testValidateValue()
+    {
+        $validator = new ContextValidator();
+
+        $this->assertFalse($validator->validateValue(''));
+        $this->assertEquals('The value cannot be empty', $validator->getErrors()['value'][0]);
+
+        $this->assertFalse($validator->validateValue(str_pad('My String', 256, 0)));
+        $this->assertEquals('The value length has to be less or equal to 255', $validator->getErrors()['value'][1]);
+
+        $this->assertTrue($validator->validateValue('My Value'));
+    }
+
     public function testValidate()
     {
         $validator = new ContextValidator();

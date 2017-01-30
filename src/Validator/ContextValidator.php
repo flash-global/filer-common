@@ -61,7 +61,7 @@ class ContextValidator extends AbstractValidator
     public function validateValue($value)
     {
         if (empty($value) && $value !== 0) {
-            $this->addError('key', 'The value cannot be empty');
+            $this->addError('value', 'The value cannot be empty');
             return false;
         }
 
