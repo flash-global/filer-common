@@ -26,6 +26,9 @@ class File extends AbstractEntity
     const CATEGORY_SINISTRE = 6;
     const CATEGORY_MAIL = 7;
     const CATEGORY_EDI = 8;
+    const CATEGORY_REIMBURSEMENT = 9;
+    const CATEGORY_SUPPLIER = 10;
+    const CATEGORY_CLIENT = 11;
 
     /**
      * @var int
