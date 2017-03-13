@@ -2,7 +2,7 @@
 
 namespace Fei\Service\Filer\Validator;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Fei\Entity\EntityInterface;
 use Fei\Entity\Validator\AbstractValidator;
 use Fei\Entity\Validator\Exception;
@@ -200,10 +200,10 @@ class FileValidator extends AbstractValidator
      */
     public function validateContext($context)
     {
-        if (!$context instanceof ArrayCollection) {
+        if (!$context instanceof Collection) {
             $this->addError(
                 'contexts',
-                'Context has to be and instance of \Doctrine\Common\Collections\ArrayCollection'
+                'Context has to be an instance of \Doctrine\Common\Collections\Collection'
             );
             return false;
         }
