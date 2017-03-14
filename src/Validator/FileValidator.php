@@ -13,6 +13,13 @@ class FileValidator extends AbstractValidator
     const UUID_PATTERN =
         '^[0-9A-Za-z]{4}:[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$';
 
+    protected $checkData;
+
+    public function __construct($checkData = true)
+    {
+        $this->setCheckData($checkData);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -28,7 +35,10 @@ class FileValidator extends AbstractValidator
         $this->validateCategory($entity->getCategory());
         $this->validateCreatedAt($entity->getCreatedAt());
         $this->validateContentType($entity->getContentType());
-        $this->validateData($entity->getData());
+
+        if ($this->getCheckData() === true) {
+            $this->validateData($entity->getData());
+        }
         $this->validateContext($entity->getContexts());
 
         return empty($this->getErrors());
@@ -221,5 +231,29 @@ class FileValidator extends AbstractValidator
         }
 
         return true;
+    }
+
+    /**
+     * Get CheckData
+     *
+     * @return mixed
+     */
+    public function getCheckData()
+    {
+        return $this->checkData;
+    }
+
+    /**
+     * Set CheckData
+     *
+     * @param mixed $checkData
+     *
+     * @return $this
+     */
+    public function setCheckData($checkData)
+    {
+        $this->checkData = $checkData;
+
+        return $this;
     }
 }

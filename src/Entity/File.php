@@ -96,7 +96,7 @@ class File extends AbstractEntity
     /**
      * @var ArrayCollection
      *
-     * @OneToMany(targetEntity="Context", mappedBy="file", cascade={"all"})
+     * @OneToMany(targetEntity="Context", mappedBy="file", cascade={"all"}, fetch="EAGER")
      */
     protected $contexts;
 
@@ -386,8 +386,19 @@ class File extends AbstractEntity
                     $value = new Context($contextData);
                 }
 
-                $value->setFile($this);
-                $this->contexts->add($value);
+                $updatedContext = false;
+                foreach ($this->getContexts() as $context) {
+                    if ($context->getKey() === $value->getKey()) {
+                        $context->setValue($value->getValue());
+                        $updatedContext = true;
+                        break;
+                    }
+                }
+
+                if (!$updatedContext) {
+                    $this->contexts->add($value);
+                    $value->setFile($this);
+                }
             }
         }
 
