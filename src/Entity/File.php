@@ -29,6 +29,8 @@ class File extends AbstractEntity
     const CATEGORY_REIMBURSEMENT = 9;
     const CATEGORY_SUPPLIER = 10;
     const CATEGORY_CLIENT = 11;
+    const CATEGORY_INVOICE_TEMP = 12;
+    const CATEGORY_CREDIT_NOTE = 13;
 
     /**
      * @var int
