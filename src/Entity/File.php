@@ -33,6 +33,7 @@ class File extends AbstractEntity
     const CATEGORY_CREDIT_NOTE = 13;
     const CATEGORY_GLOBAL_INVOICE = 14;
     const CATEGORY_GLOBAL_INVOICE_TEMP = 15;
+    const CATEGORY_INVOICE_INTERFACE = 16;
 
     /**
      * @var int
