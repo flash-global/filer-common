@@ -48,12 +48,9 @@ class FileValidatorTest extends Unit
     {
         $validator = new FileValidator();
 
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage(
-            'The entity to validate must be an instance of ' . File::class
-        );
+        $this->setExpectedException(Exception::class, 'The entity to validate must be an instance of ' . File::class);
 
-        $validator->validate(new class extends AbstractEntity {});
+        $validator->validate($this->getMockForAbstractClass(AbstractEntity::class));
     }
 
     public function testValidateUuid()
@@ -173,37 +170,5 @@ class FileValidatorTest extends Unit
         $this->assertEquals('Data cannot be empty', $validator->getErrors()['data'][0]);
 
         $this->assertTrue($validator->validateData('test'));
-    }
-
-    public function testValidateContext()
-    {
-        $fileValidator = new FileValidator();
-
-        $whenIsNotAnArrayCollection = $fileValidator->validateContext(['key' => 'val']);
-        $whenIsEmpty = $fileValidator->validateContext(new ArrayCollection());
-
-        $contexts = new ArrayCollection();
-        $contexts->add((new Context())
-            ->setKey('key')
-            ->setValue('val')
-        );
-        $whenIsNotEmptyAndChildAreValid = $fileValidator->validateContext($contexts);
-
-        $contexts = new ArrayCollection();
-        $contexts->add(new Context());
-        $whenIsNotEmptyButChildAreNotValid = $fileValidator->validateContext($contexts);
-
-        $this->assertFalse($whenIsNotAnArrayCollection);
-        $this->assertFalse($whenIsNotEmptyButChildAreNotValid);
-        $this->assertTrue($whenIsNotEmptyAndChildAreValid);
-        $this->assertTrue($whenIsEmpty);
-
-
-        $contexts = new ArrayCollection();
-        $contexts->add('value');
-
-        $this->expectException(\TypeError::class);
-        $fileValidator->validateContext($contexts);
-
     }
 }
