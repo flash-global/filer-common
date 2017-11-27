@@ -28,6 +28,8 @@ class FileChunkValidator extends AbstractValidator
         $this->validateMd5($entity->getMd5());
         $this->validateBlob($entity->getBlob());
         $this->validateTtl($entity->getTtl());
+        $this->validateSecret($entity->getSecret());
+        $this->validateRevision($entity->getRevision());
 
         return empty($this->getErrors());
     }
@@ -161,6 +163,42 @@ class FileChunkValidator extends AbstractValidator
     {
         if (!$ttl instanceof \DateTime) {
             $this->addError('ttl', 'The `ttl` has to be an instance of ' . \DateTime::class);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validate secret
+     *
+     * @param mixed $secret
+     *
+     * @return bool
+     */
+    public function validateSecret($secret)
+    {
+        if (empty($secret)) {
+            $this->addError('secret', 'The `secret` has to be an non empty string');
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Validate the revision
+     *
+     * @param mixed $revision
+     *
+     * @return bool
+     */
+    public function validateRevision($revision)
+    {
+        if (!is_numeric($revision) && !is_null($revision)) {
+            $this->addError('revision', 'The `revision` has to be a valid integer');
 
             return false;
         }

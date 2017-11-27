@@ -63,6 +63,20 @@ class FileChunk extends AbstractEntity
     protected $ttl;
 
     /**
+     * Represent the secret of a group of chunks
+     *
+     * @var string
+     */
+    protected $secret;
+
+    /**
+     * Represent the revision of the file
+     *
+     * @var int
+     */
+    protected $revision;
+
+    /**
      * Get Uuid
      *
      * @return string
@@ -250,6 +264,54 @@ class FileChunk extends AbstractEntity
     public function setTtl(\Datetime $ttl)
     {
         $this->ttl = $ttl;
+
+        return $this;
+    }
+
+    /**
+     * Get Secret
+     *
+     * @return string
+     */
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    /**
+     * Set Secret
+     *
+     * @param string $secret
+     *
+     * @return FileChunk
+     */
+    public function setSecret($secret)
+    {
+        $this->secret = $secret;
+
+        return $this;
+    }
+
+    /**
+     * Get Revision
+     *
+     * @return int
+     */
+    public function getRevision()
+    {
+        return $this->revision;
+    }
+
+    /**
+     * Set Revision
+     *
+     * @param int $revision
+     *
+     * @return FileChunk
+     */
+    public function setRevision($revision)
+    {
+        $this->revision = $revision;
 
         return $this;
     }
