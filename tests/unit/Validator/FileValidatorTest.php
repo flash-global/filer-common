@@ -171,35 +171,4 @@ class FileValidatorTest extends Unit
 
         $this->assertTrue($validator->validateData('test'));
     }
-
-    public function testValidateContext()
-    {
-        $fileValidator = new FileValidator();
-
-        $whenIsNotAnArrayCollection = $fileValidator->validateContext(['key' => 'val']);
-        $whenIsEmpty = $fileValidator->validateContext(new ArrayCollection());
-
-        $contexts = new ArrayCollection();
-        $contexts->add((new Context())
-            ->setKey('key')
-            ->setValue('val')
-        );
-        $whenIsNotEmptyAndChildAreValid = $fileValidator->validateContext($contexts);
-
-        $contexts = new ArrayCollection();
-        $contexts->add(new Context());
-        $whenIsNotEmptyButChildAreNotValid = $fileValidator->validateContext($contexts);
-
-        $this->assertFalse($whenIsNotAnArrayCollection);
-        $this->assertFalse($whenIsNotEmptyButChildAreNotValid);
-        $this->assertTrue($whenIsNotEmptyAndChildAreValid);
-        $this->assertTrue($whenIsEmpty);
-
-
-        $contexts = new ArrayCollection();
-        $contexts->add(new File());
-
-        $this->setExpectedException(\Exception::class, 'The Entity to validate must be an instance of \Fei\Service\Filer\Entity\Context');
-        $fileValidator->validateContext($contexts);
-    }
 }
