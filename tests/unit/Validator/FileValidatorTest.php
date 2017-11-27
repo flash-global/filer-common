@@ -48,12 +48,9 @@ class FileValidatorTest extends Unit
     {
         $validator = new FileValidator();
 
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage(
-            'The entity to validate must be an instance of ' . File::class
-        );
+        $this->setExpectedException(Exception::class, 'The entity to validate must be an instance of ' . File::class);
 
-        $validator->validate(new class extends AbstractEntity {});
+        $validator->validate($this->getMockBuilder(AbstractEntity::class)->getMockForAbstractClass());
     }
 
     public function testValidateUuid()
@@ -200,10 +197,9 @@ class FileValidatorTest extends Unit
 
 
         $contexts = new ArrayCollection();
-        $contexts->add('value');
+        $contexts->add(new File());
 
-        $this->expectException(\TypeError::class);
+        $this->setExpectedException(\Exception::class, 'The Entity to validate must be an instance of \Fei\Service\Filer\Entity\Context');
         $fileValidator->validateContext($contexts);
-
     }
 }

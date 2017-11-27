@@ -79,7 +79,7 @@ class FileChunk extends AbstractEntity
      *
      * @return FileChunk
      */
-    public function setUuid(string $uuid)
+    public function setUuid($uuid)
     {
         $this->uuid = $uuid;
 
