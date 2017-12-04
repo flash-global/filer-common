@@ -46,7 +46,7 @@ class FileChunk extends AbstractEntity
      *
      * @var string
      */
-    protected $blob;
+    protected $chunk;
 
     /**
      * Contains the file serialized to further usage
@@ -201,21 +201,21 @@ class FileChunk extends AbstractEntity
      *
      * @return string
      */
-    public function getBlob()
+    public function getChunk()
     {
-        return $this->blob;
+        return $this->chunk;
     }
 
     /**
      * Set Blob
      *
-     * @param string $blob
+     * @param string $chunk
      *
      * @return FileChunk
      */
-    public function setBlob($blob)
+    public function setChunk($chunk)
     {
-        $this->blob = $blob;
+        $this->chunk = $chunk;
 
         return $this;
     }
