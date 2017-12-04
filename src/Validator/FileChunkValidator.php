@@ -26,7 +26,7 @@ class FileChunkValidator extends AbstractValidator
         $this->validateChunkPosition($entity->getChunkPosition());
         $this->validateOctets($entity->getOctets());
         $this->validateMd5($entity->getMd5());
-        $this->validateBlob($entity->getBlob());
+        $this->validateChunk($entity->getChunk());
         $this->validateTtl($entity->getTtl());
         $this->validateSecret($entity->getSecret());
         $this->validateRevision($entity->getRevision());
@@ -135,16 +135,16 @@ class FileChunkValidator extends AbstractValidator
     }
 
     /**
-     * Validate blobb
+     * Validate chunk
      *
-     * @param mixed $blob
+     * @param mixed $chunk
      *
      * @return bool
      */
-    public function validateBlob($blob)
+    public function validateChunk($chunk)
     {
-        if (!is_string($blob) || empty($blob)) {
-            $this->addError('blob', 'The `blob` has to be an valid string');
+        if (!is_string($chunk) || empty($chunk)) {
+            $this->addError('chunk', 'The `chunk` has to be an valid string');
 
             return false;
         }
