@@ -20,9 +20,11 @@ class FileChunkTest extends Unit
         $this->testOneAccessors('chunkPosition', 1);
         $this->testOneAccessors('octets', 7861);
         $this->testOneAccessors('md5', md5('fake-string'));
-        $this->testOneAccessors('blob', 'fake-blob');
+        $this->testOneAccessors('chunk', 'fake-blob');
         $this->testOneAccessors('file', '{"id":65}');
         $this->testOneAccessors('ttl', new \Datetime());
+        $this->testOneAccessors('revision', 2);
+        $this->testOneAccessors('secret', 'fake-secret');
     }
 
     protected function testOneAccessors($name, $expected)
