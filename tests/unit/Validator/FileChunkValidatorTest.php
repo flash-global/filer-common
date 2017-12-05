@@ -28,7 +28,7 @@ class FileChunkValidatorTest extends Unit
             'validateChunkPosition' => Stub::once(function () { return true;}),
             'validateOctets' => Stub::once(function () { return true;}),
             'validateMd5' => Stub::once(function () { return true;}),
-            'validateBlob' => Stub::once(function () { return true;}),
+            'validateChunk' => Stub::once(function () { return true;}),
             'validateTtl' => Stub::once(function () { return true;}),
             'getErrors' => [],
         ]);
@@ -110,14 +110,14 @@ class FileChunkValidatorTest extends Unit
         $this->assertTrue($validator->validateMd5(md5('str')));
     }
 
-    public function testValidateBlob()
+    public function testValidateChunk()
     {
         $validator = new FileChunkValidator();
 
-        $this->assertFalse($validator->validateBlob(''));
-        $this->assertEquals('The `blob` has to be an valid string', $validator->getErrors()['blob'][0]);
+        $this->assertFalse($validator->validateChunk(''));
+        $this->assertEquals('The `chunk` has to be an valid string', $validator->getErrors()['chunk'][0]);
 
-        $this->assertTrue($validator->validateBlob('str'));
+        $this->assertTrue($validator->validateChunk('str'));
     }
 
     public function testValidateTtl()
