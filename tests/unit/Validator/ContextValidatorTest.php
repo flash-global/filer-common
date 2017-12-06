@@ -49,10 +49,7 @@ class ContextValidationTest extends Unit
 
         $this->assertTrue($validator->validate($context));
 
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage(
-            'The Entity to validate must be an instance of \Fei\Service\Filer\Entity\Context'
-        );
+        $this->setExpectedException(Exception::class, 'The Entity to validate must be an instance of \Fei\Service\Filer\Entity\Context');
 
         $validator->validate(new File());
     }
