@@ -29,11 +29,11 @@
         }
     },
     "require": {
-        "doctrine/common": "^2.6.1",
         "fei/entities": "^1.0.3",
-        "league/fractal": "^0.14.0"
+        "league/fractal": "^0.14.0",
+        "doctrine/common": "^2.6"
     },
     "require-dev": {
-        "codeception/codeception": "^2.2"
+        "codeception/codeception": "^2.3"
     }
 }

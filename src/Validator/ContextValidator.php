@@ -60,7 +60,7 @@ class ContextValidator extends AbstractValidator
      */
     public function validateValue($value)
     {
-        if (empty($value) && $value !== 0) {
+        if (empty($value) && $value !== 0 && !is_numeric($value)) {
             $this->addError('value', 'The value cannot be empty');
             return false;
         }
