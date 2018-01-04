@@ -1,24 +1,13 @@
-# Filer Common
+# Service Filer - Common
 
-This is the Filer Common elements package which contains:
+[![GitHub release](https://img.shields.io/github/release/flash-global/filer-common.svg?style=for-the-badge)](README.md)
 
-- File Entity and transformer
-- File Entity validator
-- Context Entity and transformer
-- Context Entity validator
-- Related classes
+## Table of contents
+- [Entities](#entities)
+- [Validators](#validators)
+- [Contribution](#contribution)
 
-# Installation and Requirement
-
-Filer Client needs **PHP 5.5** or higher.
-
-Add this requirement to your `composer.json`: `"fei/filer-common": : "^1.0"`
-
-Or execute `composer.phar require fei/filer-common` in your terminal.
-
-# Usage
-
-## Entities and classes
+## Entities
 
 ### File entity
 
@@ -60,9 +49,7 @@ In addition to traditional ID field, Context Entity has **three** important prop
 - `value` is a string defining the context's value
 - `file` is a File object indicating the context's related file
 
-## Other tools
-
-### File validator
+## Validators
 
 You have the possibility to validate a `File` entity with `FileValidator` class:
 
@@ -174,3 +161,13 @@ $contextValidator->validateValue($context->getValue());
 $errors = $contextValidator->getErrors();
 echo empty($errors); // true
 ```
+
+## Contribution
+As FEI Service, designed and made by OpCoding. The contribution workflow will involve both technical teams. Feel free to contribute, to improve features and apply patches, but keep in mind to carefully deal with pull request. Merging must be the product of complete discussions between Flash and OpCoding teams :) 
+
+
+
+
+
+
+
