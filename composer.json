@@ -1,39 +1,30 @@
 {
-    "name": "fei/filer-common",
-    "description": "Flash applicative filer - common components",
-    "type": "library",
-    "keywords": [
-        "filer"
-    ],
-    "authors": [
-        {
-            "name": "Vincent Simonin",
-            "email": "vsi@opcoding.eu",
-            "role": "lead"
-        },
-        {
-            "name": "Boris Cerati",
-            "email": "bce@opcoding.eu",
-            "role": "dev"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://composer.flash-global.net"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Fei\\Service\\Filer\\": "src"
-        }
-    },
-    "require": {
-        "fei/entities": "^1.0.3",
-        "league/fractal": "^0.14.0",
-        "doctrine/common": "^2.6"
-    },
-    "require-dev": {
-        "codeception/codeception": "^2.3"
+  "name": "fei/filer-common",
+  "description": "Flash applicative filer - common components",
+  "type": "library",
+  "keywords": [
+    "filer"
+  ],
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Yoctu",
+      "email": "contact@yoctu.com",
+      "homepage": "http://yoctu.com/"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fei\\Service\\Filer\\": "src"
+    }
+  },
+  "require": {
+    "fei/entities": "^1.0.3",
+    "league/fractal": "^0.14.0",
+    "doctrine/common": "^2.6"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.3",
+    "squizlabs/php_codesniffer": "3.*"
+  }
 }
