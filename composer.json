@@ -18,6 +18,11 @@
       "Fei\\Service\\Filer\\": "src"
     }
   },
+  "config": {
+    "platform": {
+      "php": "5.5"
+    }
+  },
   "require": {
     "fei/entities": "^1.0.3",
     "league/fractal": "^0.14.0",
