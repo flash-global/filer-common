@@ -8,19 +8,14 @@
     "authors": [
         {
             "name": "Vincent Simonin",
-            "email": "vsi@opcoding.eu",
+            "email": "v.simonin@redspher.com",
             "role": "lead"
-        },
-        {
-            "name": "Boris Cerati",
-            "email": "bce@opcoding.eu",
-            "role": "dev"
-        }
+	}
     ],
     "repositories": [
         {
             "type": "composer",
-            "url": "https://composer.flash-global.net"
+            "url": "https://composer.flash.global"
         }
     ],
     "autoload": {
