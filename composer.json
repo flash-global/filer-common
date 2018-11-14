@@ -29,6 +29,7 @@
         "doctrine/common": "^2.6"
     },
     "require-dev": {
-        "codeception/codeception": "^2.3"
+        "codeception/codeception": "^2.3",
+	"squizlabs/php_codesniffer": "*"
     }
 }
