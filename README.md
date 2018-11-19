@@ -1,4 +1,9 @@
 # Filer Common
+[![GitHub license](https://img.shields.io/github/license/flash-global/filer-common.svg)](https://github.com/flash-global/filer-common)
+![continuousphp](https://img.shields.io/continuousphp/git-hub/flash-global/filer-common.svg)
+[![Build Status](https://travis-ci.org/flash-global/filer-common.svg?branch=master)](https://travis-ci.org/flash-global/filer-common)
+[![GitHub issues](https://img.shields.io/github/issues/flash-global/filer-common.svg)](https://github.com/flash-global/filer-common/issues)
+
 
 This is the Filer Common elements package which contains:
 
