@@ -31,10 +31,5 @@
   "require-dev": {
     "codeception/codeception": "^2.3",
     "squizlabs/php_codesniffer": "3.*"
-      "fzaninotto/faker": "^1.7",
-      "phpro/grumphp": "^0.13.1",
-      "jakub-onderka/php-parallel-lint": "^0.9.2",
-      "phpmd/phpmd": "^2.6",
-      "sebastian/phpcpd": "^3.0"
   }
 }

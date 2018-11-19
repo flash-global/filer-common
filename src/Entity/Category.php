@@ -2,7 +2,6 @@
 
 namespace Fei\Service\Filer\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Fei\Entity\AbstractEntity;
 
 /**
@@ -10,7 +9,7 @@ use Fei\Entity\AbstractEntity;
  *
  * @Entity
  * @Table(
- *     name="files",
+ *     name="categories",
  * )
  *
  * @package Fei\Service\Filer\Entity
