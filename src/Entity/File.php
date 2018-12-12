@@ -18,23 +18,6 @@ use Fei\Entity\AbstractEntity;
  */
 class File extends AbstractEntity
 {
-    const CATEGORY_LOGO = 1;
-    const CATEGORY_IMG = 2;
-    const CATEGORY_INVOICE = 3;
-    const CATEGORY_CMR = 4;
-    const CATEGORY_MISCELLANEOUS = 5;
-    const CATEGORY_SINISTRE = 6;
-    const CATEGORY_MAIL = 7;
-    const CATEGORY_EDI = 8;
-    const CATEGORY_REIMBURSEMENT = 9;
-    const CATEGORY_SUPPLIER = 10;
-    const CATEGORY_CLIENT = 11;
-    const CATEGORY_INVOICE_TEMP = 12;
-    const CATEGORY_CREDIT_NOTE = 13;
-    const CATEGORY_GLOBAL_INVOICE = 14;
-    const CATEGORY_GLOBAL_INVOICE_TEMP = 15;
-    const CATEGORY_INVOICE_INTERFACE = 16;
-
     /**
      * @var int
      *
