@@ -9,7 +9,7 @@ use Fei\Entity\AbstractEntity;
  *
  * @Entity
  * @Table(
- *     name="categories",
+ *     name="category",
  * )
  *
  * @package Fei\Service\Filer\Entity
