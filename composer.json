@@ -1,40 +1,35 @@
 {
-    "name": "fei/filer-common",
-    "description": "Flash applicative filer - common components",
-    "type": "library",
-    "keywords": [
-        "filer"
-    ],
-    "authors": [
-        {
-            "name": "Vincent Simonin",
-            "email": "v.simonin@redspher.com",
-            "role": "lead"
-	}
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://composer.flash.global"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "Fei\\Service\\Filer\\": "src"
-        }
-    },
-    "require": {
-        "fei/entities": "^1.0.3",
-        "league/fractal": "^0.14.0",
-        "doctrine/common": "^2.6"
-    },
-    "require-dev": {
-      "codeception/codeception": "2.*",
-      "squizlabs/php_codesniffer": "*",
-      "fzaninotto/faker": "^1.7",
-      "phpro/grumphp": "^0.13.1",
-      "jakub-onderka/php-parallel-lint": "^0.9.2",
-      "phpmd/phpmd": "^2.6",
-      "sebastian/phpcpd": "^3.0"
+  "name": "fei/filer-common",
+  "description": "Flash applicative filer - common components",
+  "type": "library",
+  "keywords": [
+    "filer"
+  ],
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Yoctu",
+      "email": "contact@yoctu.com",
+      "homepage": "http://yoctu.com/"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Fei\\Service\\Filer\\": "src"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "5.5"
+    }
+  },
+  "require": {
+    "fei/entities": "^1.0.3",
+    "league/fractal": "^0.14.0",
+    "doctrine/common": "^2.6"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.3",
+    "squizlabs/php_codesniffer": "3.*"
+  }
 }
