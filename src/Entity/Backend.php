@@ -5,16 +5,16 @@ namespace Fei\Service\Filer\Entity;
 use Fei\Entity\AbstractEntity;
 
 /**
- * Class Category
+ * Class Backend
  *
  * @Entity
  * @Table(
- *     name="category",
+ *     name="backend",
  * )
  *
  * @package Fei\Service\Filer\Entity
  */
-class Category extends AbstractEntity
+class Backend extends AbstractEntity
 {
     /**
      * @var int
@@ -30,14 +30,14 @@ class Category extends AbstractEntity
      *
      * @Column(type="string", length=32)
      */
-    protected $label;
+    protected $name;
 
     /**
-     * @var int
+     * @var string
      *
-     * @Column(type="integer")
+     * @Column(type="string", length=255)
      */
-    protected $backend = 1;
+    protected $settings;
 
     /**
      * @var int
@@ -47,18 +47,17 @@ class Category extends AbstractEntity
     protected $status;
 
     /**
-     * @var \DateTime
+     * @var int
      *
-     * @Column(type="datetime")
+     * @Column(type="string", length=32)
      */
-    protected $createdAt;
+    protected $type;
 
     /**
      * {@inheritdoc}
      */
     public function __construct($data = null)
     {
-        $this->setCreatedAt(new \DateTime());
         parent::__construct($data);
     }
 
@@ -87,6 +86,78 @@ class Category extends AbstractEntity
     }
 
     /**
+     * Get Name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set Name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Settings
+     *
+     * @return string
+     */
+    public function getSettings()
+    {
+        return $this->settings;
+    }
+
+    /**
+     * Set Settings
+     *
+     * @param string $settings
+     *
+     * @return $this
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+
+        return $this;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set Name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
      * Get Status
      *
      * @return int
@@ -110,79 +181,4 @@ class Category extends AbstractEntity
         return $this;
     }
 
-    /**
-     * Get Uuid
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return $this->label;
-    }
-
-    /**
-     * Set Uuid
-     *
-     * @param string $label
-     *
-     * @return $this
-     */
-    public function setLabel($label)
-    {
-        $this->label = $label;
-
-        return $this;
-    }
-
-    /**
-     * Get Backend
-     *
-     * @return int
-     */
-    public function getBackend()
-    {
-        return $this->backend;
-    }
-
-    /**
-     * Set Backend
-     *
-     * @param int $backend
-     *
-     * @return $this
-     */
-    public function setBackend($backend)
-    {
-        $this->backend = $backend;
-
-        return $this;
-    }
-
-    /**
-     * Get CreatedAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set CreatedAt
-     *
-     * @param \DateTime|string $createdAt
-     *
-     * @return $this
-     */
-    public function setCreatedAt($createdAt)
-    {
-        if (!$createdAt instanceof \DateTime) {
-            $createdAt = new \DateTime($createdAt);
-        }
-
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
 }
