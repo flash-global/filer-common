@@ -40,9 +40,9 @@ class Backend extends AbstractEntity
     protected $settings;
 
     /**
-     * @var int
+     * @var string
      *
-     * @Column(type="integer")
+     * @Column(type="string", length=32)
      */
     protected $status;
 
@@ -160,7 +160,7 @@ class Backend extends AbstractEntity
     /**
      * Get Status
      *
-     * @return int
+     * @return string
      */
     public function getStatus()
     {
@@ -170,7 +170,7 @@ class Backend extends AbstractEntity
     /**
      * Set Status
      *
-     * @param int $status
+     * @param string $status
      *
      * @return $this
      */
