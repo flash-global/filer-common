@@ -107,6 +107,13 @@ class File extends AbstractEntity
     protected $contexts;
 
     /**
+     * @var MigratedFile
+     *
+     * @OneToOne(targetEntity="File", inversedBy="file", cascade={"SET NULL"}, fetch="EAGER")
+     */
+    protected $migratedFile;
+
+    /**
      * {@inheritdoc}
      */
     public function __construct($data = null)
@@ -461,5 +468,23 @@ class File extends AbstractEntity
         }
 
         return $data;
+    }
+
+    /**
+     * @return MigratedFile
+     */
+    public function getMigratedFile()
+    {
+        return $this->migratedFile;
+    }
+
+    /**
+     * @param MigratedFile $migratedFile
+     * @return $this
+     */
+    public function setMigratedFile($migratedFile): self
+    {
+        $this->migratedFile = $migratedFile;
+        return $this;
     }
 }
